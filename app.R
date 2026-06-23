@@ -144,6 +144,8 @@ server <- function(input, output, session) {
       addTiles("https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/png&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}", options = WMSTileOptions(tileSize = 256), group = "Plan IGN") %>%
       addTiles(group = "OSM") %>%
       addTiles("https://a.tile.opentopomap.org/{z}/{x}/{y}.png", group = "OpenTopoMap") %>%
+      addTiles("https://a.tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=51c79f50004846c7a4951b0ca589f77e
+", group = "ThunderForest") %>%
       addTiles("https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/jpeg&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}", options = WMSTileOptions(tileSize = 256), group = "Orthos") %>%
       addWMSTiles(
         baseUrl = "https://www.ign.es/wms-inspire/mapa-raster",
@@ -178,7 +180,7 @@ server <- function(input, output, session) {
         completedColor = "#7D4479"
       ) %>%
       addLayersControl(
-        baseGroups = c("Plan IGN", "OSM", "OpenTopoMap", "Orthos", "IGN Espagne"),
+        baseGroups = c("Plan IGN", "OSM", "OpenTopoMap", "ThunderForest", "Orthos", "IGN Espagne"),
         overlayGroups = c("Trace"),
         position = "bottomleft",
         options = layersControlOptions(collapsed = FALSE)
