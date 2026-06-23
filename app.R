@@ -23,7 +23,7 @@ trace$tooltip <- sprintf(
 ) %>% lapply(htmltools::HTML)
 
 pal <- colorFactor(
-  palette = c('red', 'blue', 'purple', 'brown'),
+  palette = c('red', 'blue', 'purple', 'brown', 'orange', 'green'),
   domain = trace$name
 )
 
@@ -145,7 +145,16 @@ server <- function(input, output, session) {
       addTiles(group = "OSM") %>%
       addTiles("https://a.tile.opentopomap.org/{z}/{x}/{y}.png", group = "OpenTopoMap") %>%
       addTiles("https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/jpeg&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}", options = WMSTileOptions(tileSize = 256), group = "Orthos") %>%
-      
+      addWMSTiles(
+        baseUrl = "https://www.ign.es/wms-inspire/mapa-raster",
+        layers = "mtn_rasterizado",
+        options = WMSTileOptions(
+          format = "image/png",
+          transparent = FALSE
+        ),
+        group = "IGN Espagne"
+      ) %>%
+
       addPolylines(
         data = trace,
         stroke = TRUE,
@@ -169,7 +178,7 @@ server <- function(input, output, session) {
         completedColor = "#7D4479"
       ) %>%
       addLayersControl(
-        baseGroups = c("Plan IGN", "OSM", "OpenTopoMap", "Orthos"),
+        baseGroups = c("Plan IGN", "OSM", "OpenTopoMap", "Orthos", "IGN Espagne"),
         overlayGroups = c("Trace"),
         position = "bottomleft",
         options = layersControlOptions(collapsed = FALSE)

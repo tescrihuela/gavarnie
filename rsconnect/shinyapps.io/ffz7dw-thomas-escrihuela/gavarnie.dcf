@@ -5,6 +5,6 @@ account: ffz7dw-thomas-escrihuela
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 17542851
-bundleId: 12167429
+bundleId:
 url: https://ffz7dw-thomas-escrihuela.shinyapps.io/gavarnie/
 version: 1
