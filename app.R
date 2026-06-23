@@ -150,7 +150,7 @@ server <- function(input, output, session) {
         data = trace,
         stroke = TRUE,
         dashArray = "5",
-        # color = ~pal(name),
+        color = ~pal(name),
         group = "Trace",
         weight = 5,
         popup = trace$popup,
