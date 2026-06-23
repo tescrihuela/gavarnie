@@ -1,0 +1,12 @@
+/* Get a fancy font from Google Fonts */
+@import url('//fonts.googleapis.com/css?family=Roboto|Montserrat:400,700');
+
+.outer {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    padding: 0;
+}
